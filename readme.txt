@@ -1,0 +1,1 @@
+Program symuluje dodawanie do bazy nowych wizyt w szpitalu. Mo¿na równie¿ dodawaæ lekarzy. Do zrobienia wykorzystano Framework WPF-Extended-Toolkit.

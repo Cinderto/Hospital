@@ -1,0 +1,149 @@
+﻿<Window x:Class="Hospital.AddingDoctor"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hospital"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="Proces dodawania nowego lekarza" Height="300" Width="500">
+    <Grid>
+        <xctk:Wizard FinishButtonClosesWindow="True">
+            <xctk:WizardPage x:Name="Intro" 
+                                   Title="Witamy"
+                                   Description="Teraz przejdziesz przez proces dodawania nowego lekarza do naszej listy. By dodawanie poszło sprawnie przygotuj imię, nazwisko, adres, numer telefonu dodawanego lekarza, specjalizacje oraz godziny jego pracy. Musisz również podać właściwe imię i nazwisko lekarza, następnie kliknij Dalej." 
+                             HelpButtonVisibility="Hidden" Margin="2,0,-2,0" >
+            </xctk:WizardPage>
+            <xctk:WizardPage x:Name="Step1" PageType="Interior"
+                                   Title="Krok 1"
+                                   Description="Podaj imię dodawanej przez Ciebie osoby."
+                             CanSelectNextPage="True"
+                             HelpButtonVisibility="Hidden">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="5px"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Imię:"/>
+                    <TextBox Grid.Column="2" Name="firstnameTextBox" />
+                </Grid>
+            </xctk:WizardPage>
+            <xctk:WizardPage x:Name="Step2" PageType="Interior"
+                                   Title="Krok 2"
+                                   Description="Podaj nazwisko dodawanej przez Ciebie osoby." 
+                             HelpButtonVisibility="Hidden" CanSelectNextPage="True" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="5px"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Nazwisko:"/>
+                    <TextBox Grid.Column="2" Name="surnameTextBox" />
+                </Grid>
+            </xctk:WizardPage>
+            <xctk:WizardPage x:Name="Step3" PageType="Interior"
+                                   Title="Krok 3"
+                                   Description="Podaj adres zamieszkania dodawanej przez Ciebie osoby."
+                             HelpButtonVisibility="Hidden" CanSelectNextPage="True" >
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="5px"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Adres zamieszkania:"/>
+                    <TextBox Grid.Column="2" Name="addressTextBox" />
+                </Grid>
+            </xctk:WizardPage>
+            <xctk:WizardPage x:Name="Step4" PageType="Interior"
+                                   Title="Krok 4"
+                                   Description="Podaj numer telefonu dodawanej przez Ciebie osoby."
+                             HelpButtonVisibility="Hidden" CanSelectNextPage="True">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="5px"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Numer telefonu:"/>
+                    <TextBox Grid.Column="2" Name="phoneNumberTextBox"/>
+                </Grid>
+            </xctk:WizardPage>
+            <xctk:WizardPage x:Name="Step5" PageType="Interior"
+                                   Title="Krok 5"
+                                   Description="Wybierz specjalizację lekarza."
+                             HelpButtonVisibility="Hidden" CanSelectNextPage="True">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="5px"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Specjalizacja:"/>
+                    <ComboBox Grid.Column="2" x:Name="specializationComboBox" Loaded="ComboBox_Loaded" />
+                </Grid>
+            </xctk:WizardPage>
+            <xctk:WizardPage x:Name="LastPage" PageType="Interior"
+                                   Title="Podsumowanie"
+                                   Description="Brawo! Dodałeś nowego lekarza do naszej bazy. Jeżeli wpisane dane zgadzają się kliknij Finish bądź zamknij okno. Jeśli nie, wróc do poprzednich okien i je edytuj."
+                                   CanFinish="True" HelpButtonVisibility="Hidden" CancelButtonVisibility="Hidden" >
+                <Grid>
+                    <TextBlock Text="Imię:"/>
+                    <TextBlock Margin="120,0,0,0">
+                        <TextBlock.Text>
+                            <Binding ElementName="firstnameTextBox" Path="Text" />
+                        </TextBlock.Text>
+                    </TextBlock>
+                    <TextBlock Margin="0,20,0,0" Text="Nazwisko:"/>
+                    <TextBlock Margin="120,20,0,0">
+                        <TextBlock.Text>
+                            <Binding ElementName="surnameTextBox" Path="Text" />
+                        </TextBlock.Text>
+                    </TextBlock>
+                    <TextBlock Margin="0,40,0,0" Text="Adres zamieszkania:"/>
+                    <TextBlock Margin="120,40,0,0">
+                        <TextBlock.Text>
+                            <Binding ElementName="addressTextBox" Path="Text" />
+                        </TextBlock.Text>
+                    </TextBlock>
+                    <TextBlock Margin="0,60,0,0" Text="Numer telefonu:"/>
+                    <TextBlock Margin="120,60,0,0">
+                        <TextBlock.Text>
+                            <Binding ElementName="phoneNumberTextBox" Path="Text" />
+                        </TextBlock.Text>
+                    </TextBlock>
+                    <TextBlock Margin="0,80,0,0" Text="Specjalizacja:"/>
+                    <TextBlock Margin="120,80,0,0">
+                        <TextBlock.Text>
+                            <Binding ElementName="specializationComboBox" Path="Text" />
+                        </TextBlock.Text>
+                    </TextBlock>
+                </Grid>
+
+
+            </xctk:WizardPage>
+        </xctk:Wizard>
+    </Grid>
+</Window>

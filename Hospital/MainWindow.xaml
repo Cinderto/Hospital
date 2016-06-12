@@ -1,0 +1,24 @@
+﻿<Window x:Class="Hospital.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Hospital"
+        mc:Ignorable="d"
+        Title="Lista wizyt" Height="351.93" Width="874.357">
+    <Grid>
+        <ListView Name="visitListView" Margin="0,0,0,45">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Dane pacjenta" Width="414" DisplayMemberBinding="{Binding Patient}" />
+                    <GridViewColumn Header="Lekarz" Width="120" DisplayMemberBinding="{Binding Doctor}"/>
+                    <GridViewColumn Header="Data wizyty" Width="120" DisplayMemberBinding="{Binding Date}"/>
+                    <GridViewColumn Header="Godzina wizyty" Width="120" DisplayMemberBinding="{Binding Hour}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button Name="buttonAddVisit" Content="Dodaj wizyte" Height="30" Width="100" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,150,7" Click="CreateAddingProcessVisit" />
+        <Button Name="buttonAddDoctor" Content="Dodaj lekarza" Height="30" Width="100" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="150,0,0,7" Click="CreateAddingProcessDoctor" />
+        <Button Name="buttonShowDoctors" Content="Baza lekarzy" Height="30" Width="100" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,7" Click="ShowDoctors" />
+    </Grid>
+</Window>
